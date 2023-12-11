@@ -8,13 +8,18 @@ const admincontroller = require("../controller/admin.controller");
 const isAdmin = require("../guards/is-admin");
 
 router.post("/addplayer", isAdmin, playerdto, admincontroller.addPlayer);
-router.put("/updateplayer/:id", playerdto, admincontroller.updatePlayer);
-router.get("/getplayer/:id", admincontroller.getPlayer);
+router.put(
+  "/updateplayer/:id",
+  isAdmin,
+  playerdto,
+  admincontroller.updatePlayer
+);
+router.get("/getplayer/:id", isAdmin, admincontroller.getPlayer);
 router.get("/getallplayers", admincontroller.getPlayer);
 
-router.post("/addnews", playerdto, admincontroller.addPlayer);
-router.put("/updatenews/:id", playerdto, admincontroller.updatePlayer);
-router.get("/addnews/:id", admincontroller.getPlayer);
-router.get("/getnews", admincontroller.getPlayer);
+router.post("/addnews", isAdmin, playerdto, admincontroller.addPlayer);
+router.put("/updatenews/:id", isAdmin, playerdto, admincontroller.updatePlayer);
+router.get("/addnews/:id", isAdmin, admincontroller.getPlayer);
+router.get("/getnews", isAdmin, admincontroller.getPlayer);
 
 module.exports = router;

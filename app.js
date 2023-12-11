@@ -12,7 +12,7 @@ require("dotenv").config();
 app.use(bodyParser.json());
 
 app.use("/api/users", authRoute);
-app.use("/api", authController);
+// app.use("/api", authController);
 
 app.use((error, req, res, next) => {
   console.log(error);
